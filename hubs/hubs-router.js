@@ -163,6 +163,14 @@ async function isThereABody(req, res, next) {
     }
 }
 
+function requireBody(req, res, next) {
+    if (req.body && Object.keys(req.body).length > 0) {
+        next();
+    } else {
+        res.status(400).json({ message: 'Pleaes include a body in your request.' });
+    }
+}
+
 
 
 
